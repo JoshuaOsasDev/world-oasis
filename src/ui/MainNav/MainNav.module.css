@@ -1,0 +1,42 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.nav a:link,
+.nav a:visited {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  color: var(--color-grey-600);
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 1.2rem 2.4rem;
+  transition: all 0.3s;
+}
+
+/* This works because react-router places the active class on the active NavLink */
+.nav a:hover,
+.nav a:active,
+.nav a:global(.active):link,
+.nav a:global(.active):visited {
+  color: var(--color-grey-800);
+  background-color: var(--color-grey-50);
+  border-radius: var(--border-radius-sm);
+}
+
+.nav a svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--color-grey-400);
+  transition: all 0.3s;
+}
+
+.nav a:hover svg,
+.nav a:active svg,
+.nav a:global(.active):link svg,
+.nav a:global(.active):visited svg {
+  color: var(--color-brand-600);
+}

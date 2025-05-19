@@ -1,0 +1,69 @@
+.formRow {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 24rem 1fr 1.2fr;
+  gap: 2.4rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--color-grey-100);
+}
+
+.formRow:first-child {
+  padding-top: 0;
+}
+
+.formRow:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.formRowHasButton {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.2rem;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.formRow input {
+  border: 1px solid var(--color-grey-300);
+  background-color: var(--color-grey-0);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem 1.2rem;
+  box-shadow: var(--shawdow-sm);
+}
+
+.formRow textarea {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--color-grey-300);
+  border-radius: 5px;
+  background-color: var(--color-grey-0);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  height: 8rem;
+}
+
+.formRow input[type="file"] {
+  font-size: 1.4rem;
+  border-radius: var(--border-radius-sm);
+  padding: 0;
+  box-shadow: var(--shawdow-sm);
+}
+
+input::file-selector-button {
+  font: inherit;
+  font-weight: 500;
+  padding: 0.8rem 1.2rem;
+  margin-right: 1.2rem;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  color: var(--color-brand-50);
+  background-color: var(--color-brand-600);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+input::file-selector-button:hover {
+  background-color: var(--color-brand-700);
+}
