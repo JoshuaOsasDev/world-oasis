@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { useCreateCabin, useDeleteCabins } from "./useCabins";
 import Modal from "../../ui/Modal/Modal";
 import ConfirmDelete from "../../ui/ComfirmDelete/ConfirmDelete";
+import Table from "../../ui/Table/Table";
 
 // import styled from "styled-components";
 
@@ -87,15 +88,19 @@ function CabinRow({ cabin }) {
   };
   return (
     <>
-      <div className={styles.tableRow} ref={ref}>
-        {inView && (
-          <img
-            src={image}
-            alt={name}
-            onLoad={() => setLoaded(true)}
-            className={`${loaded ? styles.fadeIn : styles.blur}`}
-          />
-        )}
+      <Table.Row>
+        <div ref={ref}>
+          {inView && (
+            <img
+              src={image}
+              alt={name}
+              onLoad={() => setLoaded(true)}
+              className={`${styles.tableRowimg} ${
+                loaded ? styles.fadeIn : styles.blur
+              }`}
+            />
+          )}
+        </div>
 
         <div className={styles.cabin}>{name}</div>
         <div>fit up to {maxCapacity} guests</div>
@@ -134,7 +139,7 @@ function CabinRow({ cabin }) {
             </Modal.Window>
           </Modal>
         </div>
-      </div>
+      </Table.Row>
     </>
   );
 }

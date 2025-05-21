@@ -1,3 +1,4 @@
+import styles from "./CabinTable.module.css";
 import Spinner from "../../ui/Spinner/Spinner";
 import CabinRow from "./CabinRow";
 import { useCallCabin } from "./useCabins";
@@ -32,19 +33,19 @@ function CabinTable() {
   if (isLoading) return <Spinner />;
 
   return (
-    <Table colomn=" 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
-      <Table.Header>
+    <div className={styles.tableDiv} role="table">
+      <header className={styles.header} role="row">
         <div></div>
         <div>cabin</div>
         <div>capacity</div>
         <div>price</div>
         <div>discount</div>
-      </Table.Header>
-      <Table.Body
-        data={cabins}
-        render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
-      />
-    </Table>
+      </header>
+
+      {cabins.map((cabin) => (
+        <CabinRow cabin={cabin} key={cabin.id} />
+      ))}
+    </div>
   );
 }
 

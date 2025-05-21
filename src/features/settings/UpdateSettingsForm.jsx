@@ -18,10 +18,22 @@ function UpdateSettingsForm() {
     maxGuestPerRoom,
   } = settings;
 
+  console.log(settings);
+  const currentValue = {
+    minBookingLenght,
+    breakfastPrice,
+    maxBookingLength,
+    maxGuestPerRoom,
+  };
   const handleUpdate = function (e, field) {
     const { value } = e.target;
     if (!value) return;
-    mutate({ [field]: value });
+
+    const originalValue = currentValue[field];
+
+    if (String(originalValue) !== String(value)) {
+      mutate({ [field]: value });
+    }
   };
 
   if (isLoading) return <Spinner />;
