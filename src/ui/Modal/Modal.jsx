@@ -3,6 +3,7 @@ import { HiXMark } from "react-icons/hi2";
 import CreateCabinForm from "../../features/cabins/CreateCabinForm";
 import { createContext, useContext, useState } from "react";
 import { cloneElement } from "react";
+import { createPortal } from "react-dom";
 
 const ModalContext = createContext();
 
@@ -35,7 +36,7 @@ function Window({ children, name }) {
   // }, []);
   if (name !== isOpenModal) return null;
 
-  return (
+  return createPortal(
     <div className={styles.overlay} onClick={() => onClose()}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         {cloneElement(children, { onClose })}
@@ -43,7 +44,8 @@ function Window({ children, name }) {
           <HiXMark />
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

@@ -2,6 +2,7 @@ import Spinner from "../../ui/Spinner/Spinner";
 import CabinRow from "./CabinRow";
 import { useCallCabin } from "./useCabins";
 import Table from "../../ui/Table/Table";
+import Menus from "../../ui/Menu/Menus";
 // import styled from "styled-components";
 
 // const Table = styled.div`
@@ -32,19 +33,21 @@ function CabinTable() {
   if (isLoading) return <Spinner />;
 
   return (
-    <Table colomn=" 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
-      <Table.Header>
-        <div></div>
-        <div>cabin</div>
-        <div>capacity</div>
-        <div>price</div>
-        <div>discount</div>
-      </Table.Header>
-      <Table.Body
-        data={cabins}
-        render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
-      />
-    </Table>
+    <Menus>
+      <Table colomn=" 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+        <Table.Header>
+          <div></div>
+          <div>cabin</div>
+          <div>capacity</div>
+          <div>price</div>
+          <div>discount</div>
+        </Table.Header>
+        <Table.Body
+          data={cabins}
+          render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
+        />
+      </Table>
+    </Menus>
   );
 }
 
