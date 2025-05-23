@@ -1,5 +1,5 @@
 import styles from "./Menus.module.css";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { HiEllipsisVertical } from "react-icons/hi2";
 
@@ -22,12 +22,24 @@ function Menus({ children }) {
 }
 
 function List({ id, children }) {
-  const { isOpenId, position } = useContext(MenusContext);
+  const { isOpenId, position, close } = useContext(MenusContext);
+  const ref = useRef();
+  useEffect(() => {
+    const handleMouse = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        close();
+      }
+    };
+    document.addEventListener("mousedown", handleMouse);
+
+    return () => document.removeEventListener("mousedown", handleMouse);
+  }, [close]);
+
   if (isOpenId !== id) return null;
   const { x, y } = position;
-  // console.log(x, y);
+
   return createPortal(
-    <ul className={styles.styledList} style={{ top: x, left: y }}>
+    <ul ref={ref} className={styles.styledList} style={{ top: x, left: y }}>
       {children}
     </ul>,
     document.body
