@@ -70,6 +70,7 @@ function CreateCabinForm({ cabin = {}, onClose }) {
           id="maxCapacity"
           {...register("maxCapacity", {
             required: "Max capacity is required ",
+            valueAsNumber: true,
           })}
         />
         {errors && <FormError>{errors?.maxCapacity?.message}</FormError>}

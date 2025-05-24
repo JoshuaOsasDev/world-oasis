@@ -15,6 +15,7 @@ function Filter({ filterField, options }) {
       {options.map((option) => {
         return (
           <button
+            disabled={currentValue == option.value}
             key={option.value}
             className={`${styles.filterButton} ${
               currentValue === option.value ? styles.active : ""
