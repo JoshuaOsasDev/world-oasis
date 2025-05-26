@@ -41,6 +41,7 @@ function Row({ children }) {
 }
 
 function Body({ data, render }) {
+  // console.log(render);
   if (!data.length)
     return <p className={styles.empty}>No data at the moment</p>;
   return <section className={styles.styledBody}>{data.map(render)}</section>;

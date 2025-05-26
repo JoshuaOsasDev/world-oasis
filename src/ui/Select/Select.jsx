@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import styles from "./Select.module.css";
 
 function Select({ value, options, ...props }) {
+  console.log(options[0]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
