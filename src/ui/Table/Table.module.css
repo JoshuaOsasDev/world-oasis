@@ -57,9 +57,9 @@
   justify-content: center;
   padding: 1.2rem;
 }
-.footer:not(:has(*)) {
+/* .footer:not(:has(*)) {
   display: none;
-}
+} */
 
 /* Empty state text */
 .empty {

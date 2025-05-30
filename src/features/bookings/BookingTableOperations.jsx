@@ -1,5 +1,5 @@
 import SortBy from "../../ui/SortBy";
-import Filter from "../../ui/Filter";
+import Filter from "../../ui/Filter/Filter";
 import TableOperations from "../../ui/TableOperations";
 
 function BookingTableOperations() {
@@ -16,6 +16,7 @@ function BookingTableOperations() {
       />
 
       <SortBy
+        value="sortBy"
         options={[
           { value: "startDate-desc", label: "Sort by date (recent first)" },
           { value: "startDate-asc", label: "Sort by date (earlier first)" },

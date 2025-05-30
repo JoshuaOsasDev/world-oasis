@@ -40,3 +40,20 @@
 .nav a:global(.active):visited svg {
   color: var(--color-brand-600);
 }
+
+@media screen and (max-width: 1200px) {
+  .nav {
+    margin: 0;
+    padding: 0;
+  }
+  .nav ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav a:link,
+  .nav a:visited {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

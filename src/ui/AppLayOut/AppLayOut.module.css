@@ -1,11 +1,27 @@
 .appDiv {
   display: grid;
-  grid-template-columns: 20rem 1fr;
+  grid-template-columns: 25rem 1fr;
   grid-template-rows: auto 1fr;
   height: 100vh;
+
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
 }
 
 .main {
+  grid-area: main;
   background-color: var(--color-grey-50);
   padding: 4rem 4.8rem 6.4rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .appDiv {
+    grid-template-columns: 1fr;
+    grid-template-rows: 15vh auto 20vh;
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar";
+  }
 }

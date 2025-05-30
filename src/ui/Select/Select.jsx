@@ -1,8 +1,9 @@
 import { useSearchParams } from "react-router-dom";
 import styles from "./Select.module.css";
+import { IoOptions } from "react-icons/io5";
 
 function Select({ value, options, ...props }) {
-  console.log(options[0]);
+  console.log(options);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
@@ -12,14 +13,16 @@ function Select({ value, options, ...props }) {
   return (
     <select
       {...props}
-      value={options[0].value}
+      value={options.value}
       onChange={handleChange}
       className={`${styles.select} ${
         props.type === "white" ? styles.white : ""
       }`}
     >
-      {options[0].map((option) => (
-        <option value={option.value}>{option.label}</option>
+      {options.map((option) => (
+        <option value={option.value} key={option.value}>
+          {option.label}
+        </option>
       ))}
     </select>
   );

@@ -47,7 +47,14 @@ function Body({ data, render }) {
   return <section className={styles.styledBody}>{data.map(render)}</section>;
 }
 
-(Table.Header = Header), (Table.Row = Row), (Table.Body = Body);
+function Footer({ children }) {
+  return <footer className={styles.footer}>{children}</footer>;
+}
+
+(Table.Header = Header),
+  (Table.Row = Row),
+  (Table.Body = Body),
+  (Table.Footer = Footer);
 
 export default Table;
 

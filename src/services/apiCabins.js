@@ -51,7 +51,7 @@ export const createEditCabin = async function (newCabin, id) {
       .select()
       .single());
   } else {
-    ({ data, error } = { data, error } = await supabase
+    ({ data, error } = await supabase
       .from("cabins")
       .update({ ...newCabin, image: imagePath })
       .eq("id", id)

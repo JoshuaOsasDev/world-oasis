@@ -6,6 +6,7 @@ import Table from "../../../ui/Table/Table";
 
 import { formatCurrency } from "../../../utils/helpers";
 import { formatDistanceFromNow } from "../../../utils/helpers";
+import { useSearchParams } from "react-router-dom";
 
 function BookingRow({
   booking: {
@@ -17,8 +18,8 @@ function BookingRow({
     numGuests,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
+    guests,
+    cabins,
   },
 }) {
   const statusToTagName = {
@@ -26,6 +27,9 @@ function BookingRow({
     "checked-in": "green",
     "checked-out": "silver",
   };
+  const guestName = guests?.fullName ?? "Unknown Guest";
+  const email = guests?.email ?? "No email";
+  const cabinName = cabins?.name ?? "Unknown Cabin";
 
   return (
     <Table.Row>
