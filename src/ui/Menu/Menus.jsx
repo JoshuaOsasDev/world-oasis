@@ -37,6 +37,7 @@ function List({ id, children }) {
 
   if (isOpenId !== id) return null;
   const { x, y } = position;
+  console.log(x, y, "position");
 
   return createPortal(
     <ul ref={ref} className={styles.styledList} style={{ top: x, left: y }}>
@@ -53,9 +54,13 @@ function Toggle({ id }) {
     const react = e.target.closest("button").getBoundingClientRect();
     // console.log(react);
 
+    // setPosition({
+    //   x: react.right + window.scrollX - 100,
+    //   y: react.bottom + window.scrollY + 8,
+    // });
     setPosition({
       x: react.bottom + window.scrollX,
-      y: react.left + window.scrollY,
+      y: react.left + window.scrollY - 70,
     });
 
     // setPosition();

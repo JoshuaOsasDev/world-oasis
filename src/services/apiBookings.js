@@ -1,17 +1,43 @@
 import { getToday } from "../utils/helpers";
 import supabase from "../services/superbase";
+import { PAGE_SIZE } from "../utils/constance";
 
-export async function getBookings() {
-  const { data, error } = await supabase
+export async function getBookings({ filter, sortBy, page }) {
+  let query;
+  query = supabase
     .from("bookings")
-    .select("*, cabins(*), guests(*)");
+    .select("*, cabins(*), guests(*)", { count: "exact" });
 
-  if (error) {
-    console.log(error.message);
-    throw new Error(" Bookings is not found");
+  // FILTER
+
+  if (filter) {
+    const { field, value: filterValue, method } = filter;
+    console.log(field, filterValue, method);
+    query[method](field, filterValue);
   }
 
-  return data;
+  if (sortBy)
+    query.order(sortBy.field, { ascending: sortBy.direction === "asc" });
+  // if (filter !== null) {
+  //   const { field, filterValue, method } = filter;
+  //   query[method](field, filterValue);
+  // }
+
+  //PAGE
+  const from = (page - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
+
+  if (page) {
+    query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
+  if (error) {
+    console.log(error.message);
+    throw new Error("Bookings is not found");
+  }
+
+  return { data, count };
 }
 
 export async function getBooking(id) {

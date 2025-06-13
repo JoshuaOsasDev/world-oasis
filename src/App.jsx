@@ -11,6 +11,8 @@ import Account from "./pages/Account";
 import Login from "./pages/Login/Login";
 import AppLayOut from "./ui/AppLayOut/AppLayOut";
 import { Toaster } from "react-hot-toast";
+import Booking from "./pages/Booking";
+import Checking from "./pages/Checking";
 
 function App() {
   const queryClient = new QueryClient({
@@ -29,6 +31,8 @@ function App() {
             <Route path="/" element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
+            <Route path="booking/:bookingid" element={<Booking />} />
+            <Route path="checking/:bookingid" element={<Checking />} />
             <Route path="cabins" element={<Cabins />} />
             <Route path="users" element={<NewUsers />} />
             <Route path="settings" element={<Settings />} />
